@@ -13,19 +13,18 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return TransactionResource::collection(
-            Transaction::with('category')->get());
+        return TransactionResource::collection(Transaction::with('category')->get());
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return TransactionResource
      */
     public function store(StoreTransactionRequest $request)
     {
@@ -38,7 +37,7 @@ class TransactionController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
+     * @return TransactionResource
      */
     public function show(Transaction $transaction)
     {
@@ -50,7 +49,7 @@ class TransactionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
+     * @return TransactionResource
      */
     public function update(StoreTransactionRequest $request, Transaction $transaction)
     {
